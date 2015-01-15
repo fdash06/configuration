@@ -4,4 +4,4 @@
 ## usage
     cd ~
     git clone https://github.com/fdash06/configuration.git
-    ./setup.sh
+    ./configuration/setup.sh
