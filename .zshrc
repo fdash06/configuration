@@ -112,3 +112,19 @@ precmd() { vcs_info }
 #時刻を表示させる
 alias history='history -E'
 alias rm='rmtrash'
+
+###FIXME: zshのパスが変になる ###
+##plenv
+eval "$(plenv init -)"
+
+##pyenv
+eval "$(pyenv init -)"
+
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+source ~/.zsh/zaw/zaw.zsh
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-max 5000
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert both
+zstyle ':filter-select' case-insensitive yes # 絞り込みをcase-insensitiveに
+bindkey '^@' zaw-cdr
