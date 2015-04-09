@@ -1,20 +1,16 @@
-# (d) is default on
-
-# ------------------------------
 # General Settings
-# ------------------------------
 export EDITOR=vim        # エディタをvimに設定
 export LANG=ja_JP.UTF-8  # 文字コードをUTF-8に設定
 export KCODE=u           # KCODEにUTF-8を設定
 export AUTOFEATURE=true  # autotestでfeatureを動かす
 
+# npm
+export PATH="/usr/local/share/npm/bin:$PATH"
+
 bindkey -e             # キーバインドをviモードに設定
 
-#setopt auto_pushd        # cd時にディレクトリスタックにpushdする
-#setopt correct           # コマンドのスペルを訂正する
 setopt prompt_subst      # プロンプト定義内で変数置換やコマンド置換を扱う
 setopt notify            # バックグラウンドジョブの状態変化を即時報告する
-#setopt equals            # =commandを`which command`と同じ処理にする
 
 ### Complement ###
     autoload -U compinit; compinit # 補完機能を有効にする
@@ -32,13 +28,13 @@ autoload -Uz vcs_info
 # vcsの表示    
 zstyle ':vcs_info:*' formats '%s][* %F{green}%b%f'
 zstyle ':vcs_info:*' actionformats '%s][* %F{green}%b%f(%F{red}%a%f)'
-# プロンプト表示直前にvcs_info呼び出し    
-precmd() { vcs_info }    
+# プロンプト表示直前にvcs_info呼び出し
+precmd() { vcs_info }
 
 ### History ###
     HISTFILE=~/.zsh_history   # ヒストリを保存するファイル
-    HISTSIZE=10000            # メモリに保存されるヒストリの件数
-    SAVEHIST=10000            # 保存されるヒストリの件数
+    HISTSIZE=1000             # メモリに保存されるヒストリの件数
+    SAVEHIST=1000             # 保存されるヒストリの件数
     setopt bang_hist          # !を使ったヒストリ展開を行う(d)
     setopt extended_history   # ヒストリに実行時間も保存する
     setopt hist_ignore_dups   # 直前と同じコマンドはヒストリに追加しない
@@ -74,15 +70,8 @@ precmd() { vcs_info }
 # プロンプトに色を付ける
     autoload -U colors; colors
 # 一般ユーザ時
-   #tmp_prompt="%F{cyan}[%n@%D{%m/%d %T}]%f "
-   #tmp_prompt="%{${fg[cyan]}%}%n%# %{${reset_color}%}"
-   #tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
-   #tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%}"
-   #tmp_sprompt="%{${fg[yellow]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
-   
-    tmp_prompt=$'\n'"%F{cyan}[%n%~]%f"'[${vcs_info_msg_0_}]'$'\n'"%F{green}> %f"
-   #tmp_prompt="%{${fg[cyan]}%}%n%# %{${reset_color}%}"
-    tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
+    tmp_prompt=$'\n'"%F{cyan}[%n%~]%f"'[${vcs_info_msg_0_}]'$'\n'"%F{green}(*´ω｀*)> %f"
+    tmp_prompt2=$'\n'"%F{cyan}[%n%~]%f"'[${vcs_info_msg_0_}]'$'\n'"%F{green}(^_^;)> %f"
     tmp_rprompt="%{${fg[green]}%}[%D{%T}]%{${reset_color}%}"
     tmp_sprompt="%{${fg[yellow]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
 
@@ -104,9 +93,7 @@ precmd() { vcs_info }
     ;
 
 
-# ------------------------------
 # Other Settings
-# ------------------------------
 
 ### Aliases ###
 #時刻を表示させる
