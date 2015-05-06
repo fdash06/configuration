@@ -40,6 +40,7 @@ precmd() { vcs_info }
     setopt hist_ignore_dups   # 直前と同じコマンドはヒストリに追加しない
     setopt share_history      # 他のシェルのヒストリをリアルタイムで共有する
     setopt hist_reduce_blanks # 余分なスペースを削除してヒストリに保存する
+    setopt hist_ignore_all_dups # ヒストリに追加されるコマンド行が古いものと同じなら古いものを削除
 
 # マッチしたコマンドのヒストリを表示できるようにする
     autoload history-search-end
