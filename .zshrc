@@ -99,6 +99,7 @@ precmd() { vcs_info }
 #時刻を表示させる
 alias history='history -E'
 alias rm='rmtrash'
+alias vi='vim'
 
 ###FIXME: zshのパスが変になる ###
 ##plenv
@@ -117,4 +118,9 @@ zstyle ':completion:*' recent-dirs-insert both
 zstyle ':filter-select' case-insensitive yes # 絞り込みをcase-insensitiveに
 bindkey '^@' zaw-cdr
 bindkey '^wb' zaw-git-recent-branches
-bindkey '^w' zaw-history
+bindkey '^wh' zaw-history
+bindkey '^wd' zaw-cdr
+
+
+## zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
