@@ -1,0 +1,4 @@
+set main-view = id date author commit-title:graph=yes,refs=yes
+
+bind main    R !git rebase -i %(commit)
+bind generic <Ctrl-r> refresh
