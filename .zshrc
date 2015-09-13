@@ -6,6 +6,7 @@ export AUTOFEATURE=true  # autotestでfeatureを動かす
 
 # npm
 export PATH="/usr/local/share/npm/bin:$PATH"
+export PATH=".:$PATH"
 
 bindkey -e             # キーバインドをviモードに設定
 
@@ -97,10 +98,10 @@ precmd() { vcs_info }
 # Other Settings
 
 ### Aliases ###
-#時刻を表示させる
 alias history='history -E'
 alias rm='rmtrash'
 alias vi='vim'
+alias g='git'
 
 ###FIXME: zshのパスが変になる ###
 ##plenv
@@ -108,6 +109,9 @@ eval "$(plenv init -)"
 
 ##pyenv
 eval "$(pyenv init -)"
+
+##rbenv
+eval "$(rbenv init -)"
 
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 source ~/.zsh/zaw/zaw.zsh
