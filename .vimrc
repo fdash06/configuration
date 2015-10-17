@@ -33,6 +33,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 
 hi Pmenu ctermbg=4
 hi PmenuSel ctermbg=1
@@ -53,5 +54,5 @@ NeoBundleCheck
 "
 " Unite.vim
 let g:unite_enable_start_insert = 1
-nnoremap <silent> <C-@> :<C-u>Unite file_mru<CR>
-inoremap <silent> <C-@> <ESC>:<C-u>Unite file_mru<CR>
+nnoremap <silent> <C-@> :<C-u>Unite buffer file_mru file<CR>
+inoremap <silent> <C-@> <ESC>:<C-u>Unite buffer file_mru file<CR>
