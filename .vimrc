@@ -1,5 +1,6 @@
 set number "行番号を表示する
 set title "編集中のファイル名を表示
+set ruler
 set showmatch "括弧入力時の対応する括弧を表示
 syntax on "コードの色分け
 set tabstop=4 "インデントをスペース4つ分に設定
@@ -12,10 +13,19 @@ set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
 
 autocmd! BufNewFile,BufRead *.tt,*.tx setf html
 
+" closing tags
+autocmd FileType html inoremap <silent> <buffer> </ </<C-x><C-o>
+
+" for %
+source $VIMRUNTIME/macros/matchit.vim
+
 "#####検索設定#####
 set ignorecase "大文字/小文字の区別なく検索する
 set smartcase "検索文字列に大文字が含まれている場合は区別して検索する
 set wrapscan "検索時に最後まで行ったら最初に戻る
+
+" for %
+source $VIMRUNTIME/macros/matchit.vim
 
 "---------------------------
 " Start Neobundle Settings.
@@ -34,6 +44,15 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/vimproc', {
+  \ 'build' : {
+    \ 'windows' : 'make -f make_mingw32.mak',
+    \ 'cygwin' : 'make -f make_cygwin.mak',
+    \ 'mac' : 'make -f make_mac.mak',
+    \ 'unix' : 'make -f make_unix.mak',
+  \ },
+\ }
+
 
 hi Pmenu ctermbg=4
 hi PmenuSel ctermbg=1
@@ -54,5 +73,6 @@ NeoBundleCheck
 "
 " Unite.vim
 let g:unite_enable_start_insert = 1
-nnoremap <silent> <C-@> :<C-u>Unite buffer file_mru file<CR>
-inoremap <silent> <C-@> <ESC>:<C-u>Unite buffer file_mru file<CR>
+nnoremap <C-@> :<C-u>Unite buffer file_mru file<CR>
+nnoremap <silent> <space>g  :<C-u>Unite grep: -buffer-name=search-buffer<CR>
+nnoremap <silent> <space>r  :<C-u>UniteResume search-buffer<CR>
