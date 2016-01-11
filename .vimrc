@@ -76,3 +76,12 @@ let g:unite_enable_start_insert = 1
 nnoremap <C-@> :<C-u>Unite buffer file_mru file<CR>
 nnoremap <silent> <space>g  :<C-u>Unite grep: -buffer-name=search-buffer<CR>
 nnoremap <silent> <space>r  :<C-u>UniteResume search-buffer<CR>
+
+
+" user function
+function! Tab(param)
+    let &l:tabstop = a:param
+    let &l:shiftwidth = a:param
+endfunction
+nnoremap <space>t2 :<C-u>:call Tab(2)<CR>
+nnoremap <space>t4 :<C-u>:call Tab(4)<CR>
