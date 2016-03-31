@@ -16,9 +16,6 @@ autocmd! BufNewFile,BufRead *.tt,*.tx setf html
 " closing tags
 autocmd FileType html inoremap <silent> <buffer> </ </<C-x><C-o>
 
-" for %
-source $VIMRUNTIME/macros/matchit.vim
-
 "#####検索設定#####
 set ignorecase "大文字/小文字の区別なく検索する
 set smartcase "検索文字列に大文字が含まれている場合は区別して検索する
