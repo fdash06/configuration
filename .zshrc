@@ -101,6 +101,7 @@ alias history='history -E'
 alias rm='rmtrash'
 alias vi='vim'
 alias g='git'
+alias v='vagrant'
 
 ###FIXME: zshのパスが変になる ###
 ##plenv
