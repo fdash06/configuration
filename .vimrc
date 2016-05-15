@@ -105,10 +105,17 @@ NeoBundleCheck
 "
 " Unite.vim
 let g:unite_enable_start_insert = 1
-nnoremap <C-@> :<C-u>Unite buffer file_mru file<CR>
-nnoremap <silent> <space>g  :<C-u>Unite grep: -buffer-name=search-buffer<CR>
-nnoremap <silent> <space>r  :<C-u>UniteResume search-buffer<CR>
+nnoremap <C-@> :Unite buffer file_mru file<CR>
+nnoremap <silent> <space>g :Unite grep: -buffer-name=search-buffer<CR>
+nnoremap <silent> <space>r :UniteResume search-buffer<CR>
+nnoremap <silent> <space>r :UniteResume search-buffer<CR>
+nnoremap <space>rm :Unite rails/model<CR>
+nnoremap <space>rc :Unite rails/controller<CR>
+nnoremap <space>rv :Unite rails/view<CR>
+nnoremap <space>rh :Unite rails/helper<CR>
 
+" # NERDTree
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 " user function
 function! Tab(param)
