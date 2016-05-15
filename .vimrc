@@ -36,8 +36,27 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " neobundle自体をneobundleで管理
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" 今後このあたりに追加のプラグインをどんどん書いて行きます！！
+NeoBundle 'itchyny/lightline.vim'
+set laststatus=2
+let g:lightline = {
+   \ 'colorscheme': 'wombat',
+   \ 'active': {
+   \   'left': [ [ 'mode', 'paste' ],
+   \             [ 'fugitive', 'readonly', 'absolutepath', 'modified' ] ]
+   \ },
+   \ 'component': {
+   \   'readonly': '%{&filetype=="help"?"":&readonly?"RO":""}',
+   \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+   \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+   \ },
+   \ 'component_visible_condition': {
+   \   'readonly': '(&filetype!="help"&& &readonly)',
+   \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+   \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+   \ }
+   \ }
 
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
@@ -50,6 +69,22 @@ NeoBundle 'Shougo/vimproc', {
   \ },
 \ }
 
+
+NeoBundle 'Shougo/neocomplete.vim'
+"NeoBundle 'marcus/rsense'
+"NeoBundle 'supermomonga/neocomplete-rsense.vim'
+"
+" ドキュメント参照
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'yuku-t/vim-ref-ri'
+
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'basyura/unite-rails'
+
+" 自動で閉じる
+NeoBundle 'tpope/vim-endwise'
+
+NeoBundle 'scrooloose/nerdtree'
 
 hi Pmenu ctermbg=4
 hi PmenuSel ctermbg=1
